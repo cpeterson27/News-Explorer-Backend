@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+require("dotenv").config({path: "./.env"});
+
+>>>>>>> rescue-stash
 const { NotFoundError } = require("./utils/errors/NotFoundError");
 
 const express = require("express");
@@ -5,10 +10,17 @@ const routes = require('./routes');
 const mongoose = require("mongoose");
 const cors = require("cors");
 const helmet = require("helmet");
+<<<<<<< HEAD
 const rateLimit = require("./utils/rateLimit");
 const { errors: celebrateErrors } = require("celebrate");
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const errorHandler = require("./middleware/errorHandler");
+=======
+const limiter = require("./utils/rateLimit");
+const { errors: celebrateErrors } = require("celebrate");
+const { requestLogger, errorLogger } = require('./middleware/logger');
+const errorHandler = require("./utils/errorHandler");
+>>>>>>> rescue-stash
 
 const app = express();
 
@@ -22,7 +34,11 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
+<<<<<<< HEAD
 app.use(rateLimit);
+=======
+app.use(limiter);
+>>>>>>> rescue-stash
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -46,8 +62,11 @@ mongoose.set("strictQuery", false);
 const connectWithRetry = () => {
 mongoose
 .connect(MONGODB_URI, {
+<<<<<<< HEAD
   useNewUrlParser: true,
       useUnifiedTopology: true,
+=======
+>>>>>>> rescue-stash
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
 })
