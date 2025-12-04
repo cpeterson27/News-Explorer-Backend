@@ -10,13 +10,11 @@ module.exports = (req, _res, next) => {
   }
 
   const token = authorization.replace("Bearer ", "");
-<<<<<<< HEAD
-=======
+
   if (!token){
     return next(new UnauthorizedError("Authorization Required"));
   }
-  
->>>>>>> rescue-stash
+
   let payload;
 
   try {
