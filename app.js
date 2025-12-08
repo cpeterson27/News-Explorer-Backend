@@ -1,6 +1,5 @@
 require("dotenv").config({path: "./.env"});
 
-
 const { NotFoundError } = require("./utils/errors/NotFoundError");
 
 const express = require("express");
@@ -21,7 +20,7 @@ const app = express();
 const { PORT, MONGODB_URI = "mongodb://127.0.0.1:27017/database"} = process.env;
 
 app.use(cors({
-  origin: process.env.NODE_ENV === "development"
+  origin: process.env.NODE_ENV === "production"
     ? process.env.FRONTEND_URL
     : "http://localhost:5000",
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
