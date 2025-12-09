@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
 
-app.use('/', routes);
+app.use('/api', routes);
 app.use('/news', newsRoutes);
 
 
