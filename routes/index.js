@@ -4,11 +4,11 @@ const auth = require('./auth');
 const userRoute = require('./user');
 const newsRoute = require('./news');
 
-
-router.use("/api/articles", articleRoute);
-router.use("/api/auth", auth);
-router.use("/api/user", userRoute);
-router.use("/api/news", newsRoute);
+// Remove /api prefix since it's already added in app.js
+router.use("/articles", articleRoute);
+router.use("/auth", auth);
+router.use("/user", userRoute);
+router.use("/news", newsRoute);
 
 module.exports = router;
 
