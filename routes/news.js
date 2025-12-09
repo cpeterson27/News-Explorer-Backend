@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-router.get('/news', async (req, res) => {
+router.get('/api/news', async (req, res) => {
   try {
     const { q, from, to, sortBy = 'publishedAt' } = req.query;
 
