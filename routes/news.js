@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/search', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const { q, from, to, sortBy = 'publishedAt' } = req.query;
 
