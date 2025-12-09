@@ -3,7 +3,7 @@ require('dotenv').config({ path: './.env' });
 const NotFoundError = require('./utils/errors/NotFoundError');
 
 const express = require('express');
-app.set('trust proxy', true);
+
 const routes = require('./routes');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -16,6 +16,7 @@ const errorHandler = require('./utils/errorHandler');
 const limiter = require('./utils/rateLimit');
 
 const app = express();
+app.set('trust proxy', true);
 
 const { PORT, MONGODB_URI = 'mongodb://127.0.0.1:27017/database' } =
   process.env;
