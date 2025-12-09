@@ -12,6 +12,8 @@ const helmet = require("helmet");
 const { errors: celebrateErrors } = require("celebrate");
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const errorHandler = require("./utils/errorHandler");
+const newsRoutes = require('./routes/news');
+
 
 const limiter = require("./utils/rateLimit");
 
@@ -36,6 +38,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
 
 app.use('/', routes);
+app.use('/news', newsRoutes);
+
 
 app.use((_req, _res, next) => {
   next(new NotFoundError("Requested resource not found"));
