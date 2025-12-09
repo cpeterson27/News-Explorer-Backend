@@ -3,6 +3,7 @@ require('dotenv').config({ path: './.env' });
 const NotFoundError = require('./utils/errors/NotFoundError');
 
 const express = require('express');
+app.set('trust proxy', true);
 const routes = require('./routes');
 const mongoose = require('mongoose');
 const cors = require('cors');
