@@ -16,7 +16,7 @@ const errorHandler = require('./utils/errorHandler');
 const limiter = require('./utils/rateLimit');
 
 const app = express();
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 const { PORT, MONGODB_URI = 'mongodb://127.0.0.1:27017/database' } =
   process.env;
