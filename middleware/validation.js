@@ -10,19 +10,27 @@ const validateURL = (value, helpers) => {
 
 const validateArticle = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30).messages({
+    keyword: Joi.string().required().min(2).max(30).messages({
       'string.min': 'The minimum length of the "name" field is 2',
       'string.max': 'The maximum length of the "name" field is 30',
       'string.empty': 'The "name" field is required',
     }),
+    source: Joi.string().required().min(1).max(100).messages({
+      'string.min': 'The minimum length of the "source" field is 2',
+      'string.max': 'The maximum length of the "source" field is 30',
+      'string.empty': 'The "source" field is required',
+    }),
     urlToImage: Joi.string().required().custom(validateURL).messages({
+      'string.empty': 'The "urlToImage" field is required',
+    }),
+     url: Joi.string().required().custom(validateURL).messages({
       'string.empty': 'The "urlToImage" field is required',
     }),
     title: Joi.string().required().min(2).messages({
       'string.min': 'Title name must be at least 2 characters long',
       'string.empty': 'The "title" field is required',
     }),
-    author: Joi.string().required().min(2).messages({
+    author: Joi.optional().messages({
       'string.min': 'Author name must be at least 2 characters long',
       'string.empty': 'The "author" field is required',
     }),
@@ -33,8 +41,8 @@ const validateArticle = celebrate({
     content: Joi.string().required().messages({
       'string.empty': 'The "content" field is required',
     }),
-    owner: Joi.string().required().messages({
-      'string.empty': 'The "owner" field is required',
+    publishedAt: Joi.string().required().messages({
+      'string.empty': 'The "content" field is required',
     }),
   }),
 });
@@ -51,14 +59,15 @@ const validateUserBody = celebrate({
       'string.empty': 'The "email" field is required',
     }),
     password: Joi.string()
-  .required()
-  .min(8)
-  .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-  .messages({
-    'string.min': 'Password must be at least 8 characters long',
-    'string.pattern.base': 'Password must contain at least one uppercase letter, one lowercase letter, and one number',
-    'string.empty': 'The "password" field is required',
-  }),
+      .required()
+      .min(8)
+      .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
+      .messages({
+        'string.min': 'Password must be at least 8 characters long',
+        'string.pattern.base':
+          'Password must contain at least one uppercase letter, one lowercase letter, and one number',
+        'string.empty': 'The "password" field is required',
+      }),
   }),
 });
 

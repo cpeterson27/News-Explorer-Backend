@@ -44,7 +44,7 @@ const register = async (req, res, next) => {
     if (err.code === 11000) {
       return next(new ConflictError('Email already exists'));
     }
-
+console.error(err);
     if (err.name === 'ValidationError') {
       return next(new BadRequestError('Validation Failed'));
     }

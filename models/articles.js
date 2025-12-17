@@ -2,23 +2,24 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const Article = new mongoose.Schema({
-  name: {
+  keyword: {
     type: String,
     required: true,
     minlength: 2,
     maxlength: 30,
   },
+    source: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 100,
+  },
 
   author: {
     type: String,
-    required: true,
-    validate: {
-    validator (value) {
-      return value.length >= 2;
-    },
     message: 'Author name must be at least 2 characters long',
   },
-},
+
   title: {
     type: String,
     required: true,

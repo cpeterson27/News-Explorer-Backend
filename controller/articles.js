@@ -18,7 +18,7 @@ const getArticles = async (req, res, next) => {
 const saveArticle = async (req, res, next) => {
   try {
     const {
-      name,
+      keyword,
       author,
       title,
       description,
@@ -26,10 +26,11 @@ const saveArticle = async (req, res, next) => {
       urlToImage,
       publishedAt,
       content,
+      source
     } = req.body;
     const owner = req.user._id;
     const article = await Article.create({
-      name,
+      keyword,
       author,
       title,
       description,
@@ -38,9 +39,11 @@ const saveArticle = async (req, res, next) => {
       publishedAt,
       content,
       owner,
+      source
     });
     res.status(201).json(article);
   } catch (err) {
+    console.log(err);
     if (err.name === "ValidationError") {
       return next(new BadRequestError("Validation Failed"));
     }

@@ -31,7 +31,6 @@ userSchema.pre('save', async function (next) {
   }
   const saltRounds = Number(process.env.SALT_ROUNDS) || 10;
   this.password = await bcrypt.hash(this.password, saltRounds);
-  next();
 });
 
 userSchema.statics.findUserByCredentials = async function findUserByCredentials(email, password) {

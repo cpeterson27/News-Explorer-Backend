@@ -24,9 +24,8 @@ const { PORT, MONGODB_URI = 'mongodb://127.0.0.1:27017/database' } =
 app.use(
   cors({
     origin:
-      process.env.NODE_ENV === 'production'
-        ? process.env.FRONTEND_URL
-        : 'http://localhost:5000',
+
+        ['http://localhost:5000', 'https://newsexplorer28.crabdance.com'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
