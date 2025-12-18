@@ -20,9 +20,13 @@ const validateArticle = celebrate({
       'string.max': 'The maximum length of the "source" field is 30',
       'string.empty': 'The "source" field is required',
     }),
-    urlToImage: Joi.string().required().custom(validateURL).messages({
-      'string.empty': 'The "urlToImage" field is required',
-    }),
+    urlToImage: Joi.string().allow('').custom((value, helpers) => {
+  if (value === '') return value; // Allow empty string
+  if (validator.isURL(value)) return value;
+  return helpers.message('Invalid URL format');
+}).messages({
+  'string.empty': 'The "urlToImage" field can be empty',
+}),
      url: Joi.string().required().custom(validateURL).messages({
       'string.empty': 'The "urlToImage" field is required',
     }),
@@ -34,7 +38,7 @@ const validateArticle = celebrate({
       'string.min': 'Author name must be at least 2 characters long',
       'string.empty': 'The "author" field is required',
     }),
-    description: Joi.string().required().min(2).messages({
+    description: Joi.optional().messages({
       'string.min': 'Description must be at least 2 characters long',
       'string.empty': 'The "description" field is required',
     }),

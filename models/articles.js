@@ -8,7 +8,7 @@ const Article = new mongoose.Schema({
     minlength: 2,
     maxlength: 30,
   },
-    source: {
+  source: {
     type: String,
     required: true,
     minlength: 1,
@@ -24,17 +24,15 @@ const Article = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-    validator (value) {
-      return value.length >= 2;
+      validator(value) {
+        return value.length >= 2;
+      },
+      message: 'Title name must be at least 2 characters long',
     },
-    message: 'Title name must be at least 2 characters long',
   },
-},
 
   description: {
     type: String,
-    required: true,
-    minlength: 2,
   },
 
   url: {
@@ -44,20 +42,21 @@ const Article = new mongoose.Schema({
       validator(value) {
         return validator.isURL(value);
       },
-    message: "Must be a valid URL",
+      message: 'Must be a valid URL',
     },
   },
 
-  urlToImage: {
-    type: String,
-    required: [true, 'The imageUrl field is required'],
-    validate: {
-      validator(value) {
-        return validator.isURL(value);
-      },
-      message: 'You must enter a valid URL',
+urlToImage: {
+  type: String,
+  required: false, // Change to false
+  validate: {
+    validator(value) {
+      if (!value || value === '') return true; // Allow empty
+      return validator.isURL(value);
     },
+    message: 'You must enter a valid URL',
   },
+},
 
   publishedAt: {
     type: Date,
@@ -66,7 +65,7 @@ const Article = new mongoose.Schema({
 
   content: {
     type: String,
-    required: true
+    required: true,
   },
 
   owner: {

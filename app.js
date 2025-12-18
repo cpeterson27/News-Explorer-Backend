@@ -21,6 +21,8 @@ app.set('trust proxy', 1);
 const { PORT, MONGODB_URI = 'mongodb://127.0.0.1:27017/database' } =
   process.env;
 
+console.log('MONGODB_URI:', MONGODB_URI);
+
 app.use(
   cors({
     origin:
