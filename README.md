@@ -23,7 +23,7 @@ The NewsExplorer Backend API is a Node.js/Express server that handles user authe
 
 ## 🚀 Live API
 
-**Base URL**: `https://api.newsexplorer27.mooo.com`
+**Base URL**: `https://api.newsexplorer28.crabdance.com`
 
 **GitHub**: [https://github.com/cpeterson27/News-Explorer-Backend](https://github.com/cpeterson27/News-Explorer-Backend)
 
@@ -321,10 +321,10 @@ News-Explorer-Backend/
    ```env
    NODE_ENV=development
    PORT=5001
-   MONGODB_URI=mongodb://127.0.0.1:27017/newsexplorer
+   MONGODB_URI=mongodb://127.0.0.1:27017/database
    JWT_SECRET=your-super-secret-jwt-key-min-32-characters
    NEWS_API_KEY=your-newsapi-key-here
-   FRONTEND_URL=http://localhost:5001
+   FRONTEND_URL=http://localhost:5000
    SALT_ROUNDS=10
    ```
 
@@ -360,10 +360,10 @@ News-Explorer-Backend/
    ```env
    NODE_ENV=production
    PORT=5001
-   MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/newsexplorer
+   MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/News-Explorer-App?appName=News-Explorer-App
    JWT_SECRET=your-production-secret-key
    NEWS_API_KEY=your-newsapi-key
-   FRONTEND_URL=https://newsexplorer27.mooo.com
+   FRONTEND_URL=https://newsexplorer28.crabdance.com
    ```
 
 2. **Use PM2 for process management**
@@ -378,7 +378,7 @@ News-Explorer-Backend/
    ```nginx
    server {
        listen 80;
-       server_name api.newsexplorer27.mooo.com;
+       server_name 	api.newsexplorer28.crabdance.com;
        
        location / {
            proxy_pass http://localhost:5001;
@@ -627,19 +627,6 @@ All endpoints are currently under the base path. Future versions will be namespa
 
 ---
 
-## 🤝 Contributing
-
-This project was created as part of the TripleTen Software Engineering Bootcamp. While it's primarily a learning project, suggestions and feedback are welcome!
-
-To contribute:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
 ## 👤 Author
 
 **Cassandra Peterson**
@@ -665,15 +652,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support
-
-If you encounter any issues or have questions:
-1. Check the [Issues](https://github.com/cpeterson27/News-Explorer-Backend/issues) page
-2. Create a new issue with detailed information
-3. Reach out via LinkedIn
-
----
-
 - **Frontend Repository**: [News-Explorer-Frontend](https://github.com/cpeterson27/News-Explorer-Frontend)
-- **Live Application**: [newsexplorer27.mooo.com](https://newsexplorer27.mooo.com)
+- **Live Application**: [newsexplorer28.crabdance.com](https://newsexplorer28.crabdance.com)
 
