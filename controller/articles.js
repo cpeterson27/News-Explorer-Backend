@@ -9,7 +9,6 @@ const {
 const getSavedArticles = async (req, res, next) => {
   try {
     const owner = req.user._id;
-    // add orFail later if needed
     const articles = await Article.find({ owner }).lean();
     console.log(articles);
     res.send(articles);
