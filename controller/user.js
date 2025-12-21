@@ -16,14 +16,6 @@ const register = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
 
-    if (!email) {
-      return next(new BadRequestError('Email is required'));
-    }
-
-    if (!password) {
-      return next(new BadRequestError('Password is required'));
-    }
-
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return next(new ConflictError('Email already exists'));
@@ -44,11 +36,11 @@ const register = async (req, res, next) => {
     if (err.code === 11000) {
       return next(new ConflictError('Email already exists'));
     }
-console.error(err);
+    console.error(err);
     if (err.name === 'ValidationError') {
-      return next(new BadRequestError('Validation Failed'));
+      return next(err);
     }
-    return next(new InternalServerError('An error has occured on the server'));
+    return next(new InternalServerError('An error has occurred on the server'));
   }
 };
 
@@ -94,7 +86,7 @@ const getCurrentUser = async (req, res, next) => {
     if (err.name === 'DocumentNotFoundError') {
       return next(new NotFoundError('User not found'));
     }
-    return next(new InternalServerError('An error has occured on the server'));
+    return next(new InternalServerError('An error has occurred on the server'));
   }
 };
 

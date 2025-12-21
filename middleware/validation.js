@@ -21,7 +21,7 @@ const validateArticle = celebrate({
       'string.empty': 'The "source" field is required',
     }),
     urlToImage: Joi.string().allow('').custom((value, helpers) => {
-  if (value === '') return value; // Allow empty string
+  if (value === '') return value;
   if (validator.isURL(value)) return value;
   return helpers.message('Invalid URL format');
 }).messages({

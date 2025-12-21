@@ -26,7 +26,6 @@ console.log('MONGODB_URI:', MONGODB_URI);
 app.use(
   cors({
     origin:
-
         ['http://localhost:5000', 'https://newsexplorer28.crabdance.com'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
