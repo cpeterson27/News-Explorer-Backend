@@ -78,7 +78,7 @@ const validateUserBody = celebrate({
 const validateAuthentication = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email().messages({
-      'string.email': 'The "email" field must be a valid email address',
+      'string.email': 'Invalid email address',
       'string.empty': 'The "email" field is required',
     }),
     password: Joi.string().required().messages({

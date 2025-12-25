@@ -48,8 +48,6 @@ app.use((_req, _res, next) => {
 
 app.use(errorLogger);
 
-app.use(celebrateErrors());
-
 app.use(errorHandler);
 
 mongoose.set('strictQuery', false);
